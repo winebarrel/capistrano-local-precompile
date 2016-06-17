@@ -21,7 +21,7 @@ module Capistrano
           namespace :assets do
 
             desc "remove manifest file from remote server"
-            task :remove_manifest do
+            task :remove_manifest, :except => { :no_release => true } do
               run "rm -f #{fetch(:assets_dir)}/manifest*.json"
             end
 
